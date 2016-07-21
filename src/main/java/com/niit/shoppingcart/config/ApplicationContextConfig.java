@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import com.niit.shoppingcart.dao.CategoryDAO;
 import com.niit.shoppingcart.dao.CategoryDAOImpl;
 import com.niit.shoppingcart.model.Category;
+import com.niit.shoppingcart.model.Supplier;
 
 @Configuration
 @ComponentScan("com.niit.shopingcart")
@@ -32,7 +33,7 @@ public class ApplicationContextConfig {
 	public DataSource getDataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("org.h2.Driver");
-		dataSource.setUrl("jdbc:h2:tcp://localhost/~/niitdb");
+		dataSource.setUrl("jdbc:h2:tcp://localhost/~/test");
 
 		dataSource.setUsername("sa");
 		dataSource.setPassword("sa");
@@ -54,7 +55,18 @@ public class ApplicationContextConfig {
     	LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
     	sessionBuilder.addProperties(getHibernateProperties());
     	sessionBuilder.addAnnotatedClass(Category.class);
-      	return sessionBuilder.buildSessionFactory();
+    	
+    	
+    	
+    	// This is my Second Commi ////
+    	// This is my Second Commi ////
+    	// This is my Second Commi ////
+    	sessionBuilder.addAnnotatedClass(Supplier.class);
+      	
+    	// This is my Second Commi ////
+    	// This is my Second Commi ////
+    	
+    	return sessionBuilder.buildSessionFactory();
     }
     
 	@Autowired
