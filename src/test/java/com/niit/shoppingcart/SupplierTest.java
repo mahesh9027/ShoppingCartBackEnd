@@ -21,10 +21,11 @@ public class SupplierTest {
 	   Supplier supplier = 	(Supplier) context.getBean("supplier");
 	   supplier.setId("SUP120");
 	   supplier.setName("SUPName120");
-	   supplier.setAddress("MUMBAI");
+	   supplier.setAddress("HYDERABAD");
 	   
 	   
 	   supplierDAO.saveOrUpdate(supplier); 
+	 System.out.println(" No of suppliers" +  supplierDAO.list().size());
 	   
 	   
 	/*   

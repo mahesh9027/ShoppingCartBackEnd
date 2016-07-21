@@ -17,7 +17,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import com.niit.shoppingcart.dao.CategoryDAO;
 import com.niit.shoppingcart.dao.CategoryDAOImpl;
 import com.niit.shoppingcart.model.Category;
+import com.niit.shoppingcart.model.Product;
 import com.niit.shoppingcart.model.Supplier;
+import com.niit.shoppingcart.model.User;
 
 @Configuration
 @ComponentScan("com.niit.shopingcart")
@@ -62,6 +64,9 @@ public class ApplicationContextConfig {
     	// This is my Second Commi ////
     	// This is my Second Commi ////
     	sessionBuilder.addAnnotatedClass(Supplier.class);
+    	sessionBuilder.addAnnotatedClass(User.class);
+    
+    	
       	
     	// This is my Second Commi ////
     	// This is my Second Commi ////
