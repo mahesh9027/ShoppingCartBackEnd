@@ -19,16 +19,16 @@ public class SupplierTest {
 	   SupplierDAO supplierDAO = 	(SupplierDAO) context.getBean("supplierDAO");
 	   
 	   Supplier supplier = 	(Supplier) context.getBean("supplier");
-	   supplier.setId("SUP120");
-	   supplier.setName("SUPName120");
-	   supplier.setAddress("HYDERABAD");
+	   supplier.setId("SUP123");
+	   supplier.setName("SUPName123");
+	   supplier.setAddress("MUMBAI");
 	   
 	   
 	   supplierDAO.saveOrUpdate(supplier); 
-	 System.out.println(" No of suppliers" +  supplierDAO.list().size());
+	   	 System.out.println(" No of suppliers" +  supplierDAO.list().size());
 	   
 	   
-	/*   
+	   	/*  
 	   
 	  if(   supplierDAO.get("sdfsf") ==null)
 	  {

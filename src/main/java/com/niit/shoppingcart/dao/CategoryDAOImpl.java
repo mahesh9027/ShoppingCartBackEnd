@@ -31,6 +31,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 	@Transactional
 	public void saveOrUpdate(Category category) {
 		sessionFactory.getCurrentSession().saveOrUpdate(category);
+	
 			
 	}
 

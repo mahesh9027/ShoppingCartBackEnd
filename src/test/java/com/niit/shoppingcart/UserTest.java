@@ -2,6 +2,7 @@ package com.niit.shoppingcart;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+
 import com.niit.shoppingcart.dao.UserDAO;
 import com.niit.shoppingcart.model.User;
 
@@ -19,17 +20,19 @@ public class UserTest {
 	   UserDAO userDAO = 	(UserDAO) context.getBean("userDAO");
 	   
 	   User user = 	(User) context.getBean("user");
-	   user.setId("USER143");
-	   user.setName("USERName143");
-	   user.setPassword("*********");
-	   user.setMobile("9848012345");
+	   user.setId("USER199");
+	   user.setName("USName199");
+	   user.setPassword("******");
+	   user.setMobile("9848024365");
 	   
 	   
 	   
 	   userDAO.saveOrUpdate(user);
+	   System.out.println(" No of users" + userDAO.list().size());
 	   
+			   
 	   
-	   
+	/*   
 	   
 	  if(   userDAO.get("sdfsf") ==null)
 	  {
@@ -40,7 +43,7 @@ public class UserTest {
 		  System.out.println("User exist .. the details are ..");
 		  System.out.println();
 	  }
-		
+		*/
 		
 		
 	}
