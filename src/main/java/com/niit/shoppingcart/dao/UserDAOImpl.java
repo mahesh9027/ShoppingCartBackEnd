@@ -3,7 +3,6 @@ package com.niit.shoppingcart.dao;
 import java.util.List;
 
 
-import javax.transaction.Transactional;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
@@ -11,8 +10,10 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.shoppingcart.model.User;
+import com.niit.shoppingcart.model.UserDetails;
 
 @Repository("userDAO")
 public class UserDAOImpl implements UserDAO {
@@ -62,6 +63,27 @@ public class UserDAOImpl implements UserDAO {
 				.createCriteria(User.class)
 				.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
 		return listUser;
+	}
+
+
+
+	public void saveOrUpdate(UserDetails userDetails) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	public boolean isValidUser(String userID, String password) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+
+	public void saveOrpdate(User user) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

@@ -21,9 +21,9 @@ public class UserTest {
 	   
 	   User user = 	(User) context.getBean("user");
 	   user.setId("USER199");
-	   user.setName("USName199");
-	   user.setPassword("******");
-	   user.setMobile("9848024365");
+	   
+	   user.setPassword("xxxxxx");
+	   
 	   
 	   
 	   

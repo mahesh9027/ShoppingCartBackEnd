@@ -1,3 +1,4 @@
+
 package com.niit.shoppingcart.dao;
 
 import java.util.List;
@@ -13,56 +14,57 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.niit.shoppingcart.model.Supplier;
+import com.niit.shoppingcart.model.Cart;
 
-@Repository("supplierDAO")
-public class SupplierDAOImpl implements SupplierDAO {
+@Repository("cartDAO")
+public class CartDAOImpl implements CartDAO {
 	
 
 	@Autowired
 	private SessionFactory sessionFactory;
 
 
-	public SupplierDAOImpl(SessionFactory sessionFactory) {
+	public CartDAOImpl(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
 
 
 
 	@Transactional
-	public void saveOrUpdate(Supplier supplier) {
-		sessionFactory.getCurrentSession().saveOrUpdate(supplier);
+	public void saveOrUpdate(Cart cart) {
+		sessionFactory.getCurrentSession().saveOrUpdate(cart);
+	
 			
 	}
 
 	@Transactional
 	public void delete(String id) {
-		Supplier supplier = new Supplier();
-		supplier.setId(id);
-		sessionFactory.getCurrentSession().delete(supplier);
+		Cart cart = new Cart();
+		cart.setId(id);
+		sessionFactory.getCurrentSession().delete(cart);
 	}
 
 	@Transactional
-	public Supplier get(String id) {
-		String hql = "from Supplier where id=" + "'"+ id +"'";
-		//  from supplier where id = '101'
+	public Cart get(String id) {
+		String hql = "from Cart where id=" + "'"+ id +"'";
+		//  from cart where id = '101'
 		Query query =  sessionFactory.getCurrentSession().createQuery(hql);
-		List<Supplier> listSupplier = (List<Supplier>) query.list();
+		List<Cart> listCart = (List<Cart>) query.list();
 		
-		if (listSupplier != null && !listSupplier.isEmpty()) {
-			return listSupplier.get(0);
+		if (listCart != null && !listCart.isEmpty()) {
+			return listCart.get(0);
 		}
 		return null;
 	}
 	
 	@Transactional
-	public List<Supplier> list() {
+	public List<Cart> list() {
 		@SuppressWarnings("unchecked")
-		List<Supplier> listSupplier = (List<Supplier>) 
+		List<Cart> listCart = (List<Cart>) 
 		          sessionFactory.getCurrentSession()
-				.createCriteria(Supplier.class)
+				.createCriteria(Cart.class)
 				.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
-		return listSupplier;
+		return listCart;
 	}
 	
 	

@@ -10,16 +10,20 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.hibernate4.HibernateTransactionManager;
-import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
+import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import com.niit.shoppingcart.dao.CategoryDAO;
 import com.niit.shoppingcart.dao.CategoryDAOImpl;
+import com.niit.shoppingcart.dao.UserDAOImpl;
+import com.niit.shoppingcart.dao.UserDetailsDAO;
+import com.niit.shoppingcart.dao.UserDetailsDAOImpl;
 import com.niit.shoppingcart.model.Category;
 import com.niit.shoppingcart.model.Product;
 import com.niit.shoppingcart.model.Supplier;
 import com.niit.shoppingcart.model.User;
+import com.niit.shoppingcart.model.UserDetails;
 
 @Configuration
 @ComponentScan("com.niit.shopingcart")
@@ -60,6 +64,8 @@ public class ApplicationContextConfig {
         sessionBuilder.addAnnotatedClass(Supplier.class);
         sessionBuilder.addAnnotatedClass(User.class);
         sessionBuilder.addAnnotatedClass(Product.class);
+        sessionBuilder.addAnnotatedClass(UserDetails.class);
+        sessionBuilder.addAnnotatedClass(User.class);
     	
     	// This is my Second Commit ////
     	// This is my Second Commit ////
@@ -78,7 +84,7 @@ public class ApplicationContextConfig {
 	@Bean(name = "transactionManager")
 	public HibernateTransactionManager getTransactionManager(
 			SessionFactory sessionFactory) {
-		HibernateTransactionManager transactionManager = new HibernateTransactionManager(
+		org.springframework.orm.hibernate5.HibernateTransactionManager transactionManager = new HibernateTransactionManager(
 				sessionFactory);
 
 		return transactionManager;
@@ -96,7 +102,18 @@ public class ApplicationContextConfig {
 	    }
 	
 	
-	
-	
+	@Autowired
+	@Bean(name = "userdetailsDAO")
+	public UserDetailsDAO getUserDetailsDAO(SessionFactory sessionFactory){
+		return new UserDetailsDAOImpl(sessionFactory);
 
+	}
+
+	@Autowired
+	@Bean(name="userdetails")
+	public UserDetails getUserDetails(SessionFactory sessionFactory){
+		return new UserDetails() ;
+		
+		
+	}
 }
